@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+      .manaklase {
+        background: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <input v-show="patiesi" type="color" v-model="krasa" />
+      <input type="radio" :value="true" v-model="patiesi" />
+      <input type="radio" :value="false" v-model="patiesi" />
+      <div
+        v-bind:style="{'background-color':krasa}"
+        v-bind:class="{manaklase:patiesi}"
+      >
+        {{ krasa }}
+      </div>
+      <div v-for="(x, index) in masivs" v-if="(index<2)">
+        {{ index }}-{{ x }}
+      </div>
+      <!--
+        <div v-text="title"></div>
+
+        <h1 v-show="patiesi">{{ title }}</h1>
+        <div>{{ number + 3 }}</div>
+        <div>{{ masivs[0] }}</div>
+        <div>{{ objekts[0].age }}</div>
+        <div>{{ sveiks() }}</div>
+        <div>{{ greetings("Peteri") }}</div>
+      -->
+    </div>
+  </body>
+</html>
+<script>
+  var vue = new Vue({
+    el: "#app",
+    data: {
+      krasa: "#000000",
+      title: "This is my title",
+      number: 6,
+      patiesi: true,
+      masivs: ["tims", 6, true],
+      objekts: [{ name: "Rolands", age: 18 }, { name: "Guntis", age: 30 }]
+    },
+    methods: {
+      sveiks: function() {
+        return "Hi " + this.objekts[0].name;
+      },
+      greetings(name) {
+        return "Hi" + name;
+      }
+    }
+  });
+</script>
